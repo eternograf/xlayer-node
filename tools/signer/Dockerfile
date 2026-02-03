@@ -12,7 +12,7 @@ RUN cd /src/db && packr2
 RUN cd /src/tools/signer && make build
 
 # CONTAINER FOR RUNNING BINARY
-FROM alpine:3.18.0
+FROM alpine:3.23.3
 COPY --from=build /src/tools/signer/dist/xlayer-signer /app/xlayer-signer
 COPY --from=build /src/tools/signer/config/signer.config.toml /app/example.config.toml
 RUN apk update && apk add postgresql15-client
